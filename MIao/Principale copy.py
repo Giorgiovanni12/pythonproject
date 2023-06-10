@@ -22,12 +22,12 @@ class MyGUI:
         self.save_button = ttk.Button(self.main_frame, text="Scarica il file nel tuo calcolatore", command=self.save_file)
         self.save_button.grid(row=1, column=1, pady=(0, 10))
 
-        self.transcribe_button = ttk.Button(self.main_frame, text="Trascrivi il file audio", command=self.process_content("/home/giorgio/MIao/X2Download.app-Online-Speech-Reception-Threshold-_SRT_-Hearing-Test-_128-kbps_.wav",15))
+        self.transcribe_button = ttk.Button(self.main_frame, text="Trascrivi il file audio", command=self.process_content("/home/giorgio/papa-massimo/MIao/X2Download.app-Online-Speech-Reception-Threshold-_SRT_-Hearing-Test-_128-kbps_.wav",15))
         self.transcribe_button.grid(row=2, column=0, pady=(0, 10))
 
 
         # Load the background image
-        self.background_image = tk.PhotoImage(file="download.png")
+        self.background_image = tk.PhotoImage(file="./download.png")
 
         # Create a canvas to display the background image
         self.canvas = tk.Canvas(master, width=self.background_image.width(), height=self.background_image.height())

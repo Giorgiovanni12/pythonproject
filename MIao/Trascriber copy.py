@@ -34,7 +34,7 @@ def split_text_into_lines(text, max_words_per_line):     #Serve per splittare le
     return lines
 
 if __name__ == "__main__":
-    audio_file_path = "/home/giorgio/MIao/X2Download.app-Online-Speech-Reception-Threshold-_SRT_-Hearing-Test-_128-kbps_.wav"
+    audio_file_path = "MIao/X2Download.app-Online-Speech-Reception-Threshold-_SRT_-Hearing-Test-_128-kbps_.wav"
     transcribed_text = transcribe_audio_file(audio_file_path)
 
     if transcribed_text:
