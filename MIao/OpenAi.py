@@ -22,8 +22,9 @@ def summarize_text(text):
 
     return summary
 
+
 if __name__ == "__main__": #inserire il file che si vuole modificare
-    with open("C:/Users/ICTS22-24.054/PycharmProjects/pythonProject/output.txt", "r") as input_file:
+    with open("/home/giorgio/papa-massimo/output.txt", "r") as input_file:
         text = input_file.read()
 
     summary = summarize_text(text)
