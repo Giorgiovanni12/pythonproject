@@ -1,0 +1,10 @@
+Notepad+++,ITS-ICT Piemonte-2023,Python,Papa Massimo,Sello Giovanni
+
+L'Oggetto del progetto è quello di riassumere un determinato file audio e trasformarlo in file di testo.
+In un secondo luogo quel file di testo viene rimodificato riassumendone il contenuto e trascrivendolo in un nuovo file.
+
+Lo scopo principale è quello di facilitare lo studio di alcuni moduli attraverso le registrazioni di Meet o Teams.
+
+Verranno utilizzati come strumenti Pycharm-Community all'interno di una macchina virtuale Linux.Le librerie necessarie: speech_recognition,openai,re(regular expressions).
+L'unica estesnione accettata dal programma sarà .wav utilizzando [https://convertio.co/it/mp3-wav/] per modificarla.
+Inoltre bisognerà richiamare le API di openAI le quali vengono rilasciate attraveso il loro sito [https://platform.openai.com/account/api-keys]
