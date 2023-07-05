@@ -1,0 +1,30 @@
+OGGETTO:
+Programma in Python per l'esame finale del corso
+
+SCOPO:
+Il progetto ha lo scopo di trascrivere in formato txt un file wav e riassumerlo.
+
+Principalmente il programma è scritto attraverso l'uso delle librerie:
+
+-tkinter per l'implementazione di un interfaccia grafica.
+{https://docs.python.org/3/library/tkinter.html}.
+
+-speech_recognition per trascrivere il file .wav in txt.
+{https://pypi.org/project/SpeechRecognition/}.
+
+-re regular expression che ha lo scopo di utilizzare caratteri speciali.
+{https://docs.python.org/3/library/re.html}.
+
+-openai che utilizzando un prompt predefinito fa una richiesta alle loro API. {https://platform.openai.com/docs/libraries}. 
+
+All'inizio del programma è presente la chiave per poter accedere alle API di OpenAI (se nel caso avesse problemi utilizzare quella del MANUALE.txt).
+
+Il programma è strutturato con una classe chiamata Application dove al suo interno viene richiamato l'attributo self per descrivere le varie utilità e funzionalità del programma. Self viene utilizzato per descrivere il colore dei pulsanti,i messaggi informativi e i bottoni collegati alle varie azioni.
+
+Per quanto riguarda le funzioni interne alla classe{open_dialog,switch_theme,transcribe,summarize}vengono utilizzate per aprire un pop-up informativo,cambiare il tema dei bottoni,trascrivere il testo da wav a txt e riassumere il contenuto del file txt.
+
+Le funzioni al di fuori della classe{transcribe_audio_file,summarize_text,split_text_into_lines}hanno la stessa funzionalità delle precedenti con eccezione all'ultima che serve per dividere in parole omogenee il file di testo.
+Per quanto riguarda come utilizzare il programma ho creato un file staccato da questo [MANUALE.TXT].
+
+
+Conclusioni: L'applicazione presentata offre un mezzo efficace per trascrivere file audio e generare riassunti di testo. Tuttavia, è importante notare che la qualità dell'output può dipendere da vari fattori, tra cui la qualità dell'audio e la complessità del testo. Nonostante queste potenziali limitazioni, l'applicazione rappresenta uno strumento utile che può facilitare la gestione e l'analisi di informazioni audio e testuali.
