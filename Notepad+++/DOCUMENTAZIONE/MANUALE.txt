@@ -1,4 +1,3 @@
-Il progetto ha lo scopo di trascrivere in formato txt un file wav e creandone un riassunto.
 Per scaricare un video qualunque da youtube si può usare {https://www.freemake.com/it/free_video_downloader_fast/}.
 Invece per convertirlo in formato wav si può usare {https://convertio.co/}.
 

@@ -1,0 +1,15 @@
+Il progetto ha lo scopo di trascrivere in formato txt un file wav e creandone un riassunto.
+Per scaricare un video qualunque da youtube si può usare {https://www.freemake.com/it/free_video_downloader_fast/}.
+Invece per convertirlo in formato wav si può usare {https://convertio.co/}.
+
+ISTRUZIONI:
+Scaricare le seguenti librerie con pip.
+{pip install tk,SpeechRecognition,openai,screeninfo}
+
+Avviare il file Trascrittore.py e inserire il path in cui è presente il file wav.
+Alla fine del programma verrà generato un file di tipo txt con la trascrizione del file.
+Avviare il file OpenAi.py e inserire il path del file txt, generando un riassunto del testo fornito.
+Purtroppo OpenAI fornisce le sue chiavi a pagamento quindi spero non dia problemi.In ogni caso ho creato un secondo account su openAI e se la chiave crea problemi,
+si può inserire questa al suo posto(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).
+Ho lasciato come prova un audio in formato wav che spiega come parlare chiaramente in pubblico.
+Ovviamente non è obbligato ad usare questo file ma è fondamentale usare il formato wav. 
