@@ -1,0 +1,1 @@
+This program lets you translate from audio to text and resume the content of the .wav file in a txt file
