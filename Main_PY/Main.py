@@ -105,7 +105,7 @@ class Application(tk.Tk):
     def open_dialog(self):  # Function to open the popup with information
         dialog = tk.Toplevel(self)
 
-        text_label = ttk.Label(dialog, text="\nThe program is designed to take a wav file and transform it into a text file.\nThe second button aims to summarize the content of the text file.\nFor any additional information, please email giovanni.sello@edu.itspiemonte.it")
+        text_label = ttk.Label(dialog, text="\nThe program is designed to take a wav file and transform it into a text file.\nThe second button aims to summarize the content of the text file.\nFor any additional information")
         text_label.pack(pady=20)
 
         close_button = ttk.Button(dialog, text="Close", command=dialog.destroy)
