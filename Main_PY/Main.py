@@ -6,15 +6,13 @@ import re
 from PIL import Image
 from screeninfo import get_monitors
 
-openai.api_key = "add your api key"  #Chiave di OpenAI 
+openai.api_key = "add your api key"  # OpenAI Key
 
-
-
-def get_screen_resolution(): #Per avere la risoluzione dello schermo
+def get_screen_resolution():  # Get screen resolution function
     monitor = get_monitors()[0]
     return monitor.width, monitor.height
 
-def resize_image(image_path): #Per ritagliare l'immagine
+def resize_image(image_path):  # Resize image function
     img = Image.open(image_path)
     screen_width, screen_height = get_screen_resolution()
     img = img.resize((screen_width, screen_height), Image.ADAPTIVE)
@@ -22,8 +20,7 @@ def resize_image(image_path): #Per ritagliare l'immagine
 
 resize_image("Main_PY/building_with_python_watermark (1).png")
 
-
-def transcribe_audio_file(audio_file_path): #funzione per trascrivere il file gestendo anche gli eventuali errori
+def transcribe_audio_file(audio_file_path):  # Function to transcribe the file handling potential errors
     recognizer = sr.Recognizer()
 
     with sr.AudioFile(audio_file_path) as source:
@@ -33,11 +30,11 @@ def transcribe_audio_file(audio_file_path): #funzione per trascrivere il file ge
         text = recognizer.recognize_google(audio_data)
         return text
     except sr.UnknownValueError:
-        print("Non si riesce a comprendere il contenuto del file")
+        print("Unable to comprehend the content of the file")
     except sr.RequestError as e:
-        print(f"Speech Recognition di google non funziona :( {e}")
+        print(f"Google Speech Recognition is not working :( {e}")
 
-def summarize_text(text): ##Prompt di OpenAi con lo scopo di riassumere il seguente testo,non prendendo in considerazione eventuali link
+def summarize_text(text):  # OpenAI prompt function to summarize the given text, ignoring any links
     text = re.sub(r'http\S+', '', text)
 
     response = openai.Completion.create(
@@ -53,7 +50,7 @@ def summarize_text(text): ##Prompt di OpenAi con lo scopo di riassumere il segue
 
     return summary
 
-def split_text_into_lines(text, max_words_per_line): #funzione per dividere le parole e andare a capo con costanza
+def split_text_into_lines(text, max_words_per_line):  # Function to split words and line break consistently
     words = text.split()
     lines = []
     current_line = []
@@ -76,46 +73,45 @@ class Application(tk.Tk):
         self.title("Notepad +++")
         self.geometry("300x300")
 
-        # Serve per caricare un immagine in background
+        # Load an image in the background
         self.background_image = PhotoImage(file="Main_PY/building_with_python_watermark (1).png")
         self.background_label = tk.Label(self, image=self.background_image)
         self.background_label.place(x=0, y=0, relwidth=1, relheight=1)
 
-        #  Serve per creare lo stile della GUI
+        # Create GUI style
         self.style = ttk.Style(self)
         self.style.theme_use('default')
 
-        #  Serve per definire i parametri dei temi scuri e chiari
+        # Define parameters for light and dark themes
         self.light_theme = {"bg": "white", "fg": "black"}
         self.dark_theme = {"bg": "black", "fg": "white"}
 
-        # Creare i bottoni per le due azioni Trascrivere/Riassumere
-        self.button1 = ttk.Button(self, text="Trascrivi il file selezionato da wav a txt", command=self.transcribe)
+        # Create buttons for two actions Transcribe/Summarize
+        self.button1 = ttk.Button(self, text="Transcribe the selected wav file to txt", command=self.transcribe)
         self.button1.pack(pady=10)
 
-        self.button2 = ttk.Button(self, text="Riassumi il file selezionato", command=self.summarize)
+        self.button2 = ttk.Button(self, text="Summarize the selected file", command=self.summarize)
         self.button2.pack(pady=10)
 
-        # Swith per lo stile chiaro/scuro
+        # Switch for light/dark theme
         self.theme_var = tk.BooleanVar()
-        self.theme_checkbutton = ttk.Checkbutton(self, text="Tema Chiaro/Scuro", variable=self.theme_var, command=self.switch_theme)
+        self.theme_checkbutton = ttk.Checkbutton(self, text="Light/Dark Theme", variable=self.theme_var, command=self.switch_theme)
         self.theme_checkbutton.pack(pady=10)
-        #Creare un bottone che dia alcune indicazioni per il progetto
-        self.button = ttk.Button(self, text="Informazioni", command=self.open_dialog)
+        
+        # Create a button that provides some information about the project
+        self.button = ttk.Button(self, text="Information", command=self.open_dialog)
         self.button.pack(pady=20)
 
-    def open_dialog(self):  #funzione per aprire il popup con le informazioni
+    def open_dialog(self):  # Function to open the popup with information
         dialog = tk.Toplevel(self)
 
-        text_label = ttk.Label(dialog, text="\nIl programma ha lo scopo di prendere un file in formato wav e di trasformarlo in file di testo.\nIl secondo bottone ha lo scopo di riassumere il contenuto del file di testo.\nPer qualsiasi informazione aggiuntiva scrivere alla mail giovanni.sello@edu.itspiemonte.it")
+        text_label = ttk.Label(dialog, text="\nThe program is designed to take a wav file and transform it into a text file.\nThe second button aims to summarize the content of the text file.\nFor any additional information, please email giovanni.sello@edu.itspiemonte.it")
         text_label.pack(pady=20)
 
-        close_button = ttk.Button(dialog, text="Chiudi", command=dialog.destroy)
+        close_button = ttk.Button(dialog, text="Close", command=dialog.destroy)
         close_button.pack(pady=20)
 
-        
-
-    def switch_theme(self): #funzione per cambiare il tema dei bottoni
+    def switch_theme(self):  # Function to change button themes
         if self.theme_var.get():
             self.style.configure("TButton", foreground=self.dark_theme["fg"], background=self.dark_theme["bg"])
             self.configure(background=self.dark_theme["bg"])
@@ -123,21 +119,21 @@ class Application(tk.Tk):
             self.style.configure("TButton", foreground=self.light_theme["fg"], background=self.light_theme["bg"])
             self.configure(background=self.light_theme["bg"])
 
-    def transcribe(self): #funzione che riprende transcribe_audio_file 
+    def transcribe(self):  # Function that uses transcribe_audio_file
         file_path = filedialog.askopenfilename(filetypes=[("Audio Files", "*.wav")])
         if file_path:
             transcribed_text = transcribe_audio_file(file_path)
             if transcribed_text:
-                print("Trascrizione per intera del testo:")
+                print("Transcription of the entire text:")
                 print(transcribed_text)
                 formatted_text = split_text_into_lines(transcribed_text, 15)
-                with open("tradotto.txt", "w") as output_file:
+                with open("translated.txt", "w") as output_file:
                     for line in formatted_text:
                         output_file.write(line + "\n")
             else:
-                print("Impossibile trascrivere :(")
+                print("Unable to transcribe :(")
 
-    def summarize(self): #funzione che riprende summarize_text
+    def summarize(self):  # Function that uses summarize_text
         file_path = filedialog.askopenfilename(filetypes=[("Text Files", "*.txt")])
         if file_path:
             with open(file_path, "r") as input_file:
@@ -145,17 +141,17 @@ class Application(tk.Tk):
 
             summary = summarize_text(text)
 
-            print("Testo originale:")
+            print("Original Text:")
             print(text)
-            print("\nSommario:")
+            print("\nSummary:")
             print(summary)
 
             summary = split_text_into_lines(summary, 15)
 
-            with open("riassunto.txt", "w") as output_file:
+            with open("summary.txt", "w") as output_file:
                 for line in summary:
                     output_file.write(line + "\n")
-                print("Trascrizione riuscita :)")
+                print("Transcription successful :)")
 
 if __name__ == "__main__":
     app = Application()
